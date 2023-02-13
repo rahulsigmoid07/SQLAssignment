@@ -1,0 +1,16 @@
+
+
+Create table candidate( Candidate_ID int ,Marks Int);
+
+INSERT INTO candidate (Candidate_ID, Marks)
+VALUES
+  (1, 98),
+  (2, 78),
+  (3, 87),
+  (4, 98),
+  (5, 78);
+  
+  select marks,dense_rank() over (order by marks desc) as `rank`,group_concat(candidate_id) as candidate_Id from candidate group by marks;
+  
+  
+  

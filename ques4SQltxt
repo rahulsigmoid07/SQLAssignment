@@ -1,0 +1,22 @@
+
+
+create candidemail(candidate_ID int,Email varchar(20));
+
+INSERT INTO candidemail (Candidate_ID, Email)
+VALUES
+  (45, 'abc@gmail.com'),
+  (23, 'def@yahoo.com'),
+  (34, 'abc@gmail.com'),
+  (21, 'bcf@gmail.com'),
+  (94, 'def@yahoo.com');
+  
+  
+WITH duplicateemails AS ( 
+select * from candidemail
+)
+delete from candidemail where candidate_id not in (select min(candidate_id) from duplicateemails group by email);
+
+select * from candidemail;
+
+
+
