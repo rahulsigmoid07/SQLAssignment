@@ -1,0 +1,25 @@
+CREATE TABLE salempdiffmon (
+  Name VARCHAR(20),
+  Jan INT,
+  Feb INT,
+  Mar INT
+);
+
+INSERT INTO salempdiffmon (Name, Jan, Feb, Mar)
+VALUES
+  ('X', 5200, 9093, 3832),
+  ('Y', 9023, 8942, 4000),
+  ('Z', 9834, 8197, 9903),
+  ('W', 3244, 4321, 2093);
+
+
+
+WITH data AS (
+  SELECT Name, 'Jan' AS Month, Jan AS Salary FROM salempdiffmon
+  UNION ALL
+  SELECT Name, 'Feb' AS Month, Feb AS Salary FROM salempdiffmon
+  UNION ALL
+  SELECT Name, 'Mar' AS Month, Mar AS Salary FROM salempdiffmon
+)
+
+select d1.Name,d1.Salary,d1.Month from data as d1 where d1.Salary = (Select max(salary) from data as d2 where d1.name = d2.name group by d2.Name) order by d1.Name;
