@@ -1,6 +1,7 @@
-###### Given a table of employees, find the number of male and female employees in each department
+#### Ques1: Given a table of employees, find the number of male and female employees in each department
 
-```
+```sql
+
 CREATE TABLE employee (
   EmpID INT NOT NULL AUTO_INCREMENT,
   Name VARCHAR(20),
